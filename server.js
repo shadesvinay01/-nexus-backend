@@ -20,9 +20,13 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.log('❌ MongoDB error:', err));
 
-// 👇 YEH NAYI LINES ADD KAR
+// Import routes
 const productRoutes = require('./routes/products');
+const authRoutes = require('./routes/auth');           // 👈 NAYI LINE
+
+// Use routes
 app.use('/api/products', productRoutes);
+app.use('/api/auth', authRoutes);                      // 👈 NAYI LINE
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
