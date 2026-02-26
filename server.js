@@ -20,6 +20,10 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.log('❌ MongoDB error:', err));
 
+// 👇 YEH NAYI LINES ADD KAR
+const productRoutes = require('./routes/products');
+app.use('/api/products', productRoutes);
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
